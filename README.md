@@ -1,1 +1,2 @@
-# schulnetzkonzept
+# Schulnetzkonzept
+Das ist ein Test.
