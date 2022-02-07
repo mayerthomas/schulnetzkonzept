@@ -1,2 +1,2 @@
 # Schulnetzkonzept
-Realisierung von Schulnetzwerken mit Hilfe gut dokumentierter und stabiler Open-Source-Anwendungen
+Realisierung von Lösungen für Schulnetzwerke mit Hilfe gut dokumentierter und stabiler Open-Source-Anwendungen
