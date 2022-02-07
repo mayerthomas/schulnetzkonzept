@@ -1,2 +1,2 @@
 # Schulnetzkonzept
-Das ist ein Test.
+Realisierung von Schulnetzwerken mit Hilfe gut dokumentierter und stabiler Open-Source-Anwendungen
