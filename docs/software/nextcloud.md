@@ -1,3 +1,3 @@
-# Netzwerk
+# Nextcloud
 
 > An awesome project.

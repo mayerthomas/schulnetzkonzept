@@ -1,3 +1,9 @@
 # Das Konzept
 
-> An awesome project.
+Als Lehrer und Systembetreuer an bayerischen Realschulen möchte ich meine Dokumentationen zur Realisierung von Schlunetzwerken mit Ihnen teilen.
+
+## Steckbrief zum Schulnetzkonzept
+> - Umsetzung mit Hilfe gut dokumentierter und stabiler Open-Source-Anwendungen
+> - Datenschutzkonforme Cloud- und Kollaborationslösungen
+> - Kosteneffizienz und Sicherheit durch Virtualisierung
+> - Keine All-In-One-Lösung, aber eine gute Sammlung! ;-)

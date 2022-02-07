@@ -4,7 +4,7 @@
 
 # Schulnetzkonzept
 
-> by T. Mayer
+> BerR Tom Mayer
 
 - basierend auf freier Software
 - datenschutzkonform

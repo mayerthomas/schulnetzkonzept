@@ -1,10 +1,21 @@
 <!-- docs/_sidebar.md -->
-
-* [Das Konzept](/)
-** [Virtualisierung](konzept/virtualisierung.md)
-** [Netzwerk](konzept/netzwerk.md)
-* [Betriebssysteme](betriebssysteme.md)
-** [Debian](betriebssysteme/debian.md)
-** [Ubuntu](betriebssysteme/ubuntu.md)
-** [OPNSense](betriebssysteme/opnsense.md)
-* [Software](betriebssysteme.md)
+- **Überblick**
+  - [Das Konzept](/)
+- **Virtualisierung**
+  - [Proxmox](virtualisierung/proxmox.md)
+  - [VLANs](virtualisierung/vlans.md)
+- **Betriebssysteme**
+  - [Debian](betriebssysteme/debian.md)
+  - [Ubuntu](betriebssysteme/ubuntu.md)
+  - [OPNSense](betriebssysteme/opnsense.md)
+  - [Raspbian Lite](betriebssysteme/raspbian-lite.md)
+  - [Windows](betriebssysteme/windows.md)
+- **Software**
+  - [Samba](software/samba.md)
+  - [LDAP-Account-Manager](software/ldap-account-manager.md)
+  - [Self-Service-Password](software/self-service-password.md)
+  - [Nextcloud](software/nextcloud.md)
+  - [Collabora für Nextcloud](software/collabora-fuer-nextcloud.md)
+  - [Jitsi Meet](software/jitsi-meet.md)
+  - [FOG Project](software/fog-project.md)
+  - [Digital Signage für Raspberry Pi](software/digital-signage-fuer-raspberry-pi.md)
