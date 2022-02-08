@@ -1,6 +1,6 @@
 # Das Konzept
 
-Als Lehrer und Systembetreuer an bayerischen Realschulen möchte ich meine Dokumentationen zur Realisierung von Schulnetzwerken mit Ihnen teilen.
+Als Systembetreuer an bayerischen Realschulen möchte ich meine Dokumentationen zur Realisierung von Lösungen für Schulnetzwerke mit Ihnen teilen.
 
 ## Steckbrief zum Schulnetzkonzept
 > - Umsetzung mit Hilfe gut dokumentierter und stabiler Open-Source-Anwendungen
