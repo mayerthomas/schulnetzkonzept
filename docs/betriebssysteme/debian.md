@@ -4,7 +4,7 @@
 
 Linux Debian ist ein weit verbreitetes und überaus stabiles Betriebssystem, welches sich für viele in diesem Projekt beschriebenen Programme als Basis eignet. 
 
-> ## Hilfreiche Links
+> **Hilfreiche Links**
 > - [Debian Downloadseite](https://www.debian.org/CD/http-ftp/)
 > - [Wiki des Debian-Forums](https://wiki.debianforum.de/Hauptseite)
 > - [Wichtige Konsolenbefehle](https://www.shellbefehle.de/befehle/)
