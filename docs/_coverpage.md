@@ -4,10 +4,10 @@
 
 # Schulnetzkonzept
 
-> BerR Tom Mayer
-
 - basierend auf freier Software
 - datenschutzkonform
-- innovativ
+- modular
 
-[Los geht's](#das-konzept)
+BerR Tom Mayer
+
+[Weiter lesen](#das-konzept)

@@ -19,3 +19,6 @@
   - [Jitsi Meet](software/jitsi-meet.md)
   - [FOG Project](software/fog-project.md)
   - [Digital Signage für Raspberry Pi](software/digital-signage-fuer-raspberry-pi.md)
+
+[Impressum](impressum/)
+[Datenschutzerklärung](datenschutzerklaerung/)
