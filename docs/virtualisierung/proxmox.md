@@ -1,3 +1,0 @@
-# Proxmox
-
-> An awesome project.

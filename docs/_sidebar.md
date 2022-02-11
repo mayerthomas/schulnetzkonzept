@@ -2,12 +2,12 @@
 - **Überblick**
   - [Das Konzept](/)
 - **Virtualisierung**
-  - [Proxmox](virtualisierung/proxmox.md)
+  - [VMs](virtualisierung/vms.md)
   - [VLANs](virtualisierung/vlans.md)
 - **Betriebssysteme**
   - [Debian](betriebssysteme/debian.md)
   - [Ubuntu](betriebssysteme/ubuntu.md)
-  - [OPNSense](betriebssysteme/opnsense.md)
+  - [OPNsense](betriebssysteme/opnsense.md)
   - [Raspbian Lite](betriebssysteme/raspbian-lite.md)
   - [Windows](betriebssysteme/windows.md)
 - **Software**

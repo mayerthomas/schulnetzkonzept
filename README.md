@@ -3,7 +3,7 @@
 
 ## Über
  - Dokumentationen zur Realisierung von Lösungen für Schulnetzwerke
- - [Offizielle Projektseite: schulnetzkonzept.de](https://schulnetzkonzept.de)
+ - Offizielle Projektseite: [schulnetzkonzept.de](https://schulnetzkonzept.de)
 
 ## Ziele
 - Umsetzung mit Hilfe gut dokumentierter und stabiler Open-Source-Anwendungen

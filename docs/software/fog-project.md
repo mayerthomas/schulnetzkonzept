@@ -1,5 +1,7 @@
 # FOG-Project
 
+![logo fog-project](../_media/logo_fog-project.png "Provided by fogproject.org")
+
 Mit der Open-Source-Software FOG können Sie über das Netzwerk selbst erstellte Images auf zahlreiche Computer gleichzeitig verteilen. 
 
 > **Wichtige Funktion von FOG**
@@ -16,21 +18,7 @@ Die aktuellen Beschreibungen basieren auf FOG in der Version 1.5.
 > - [FOG Forum](https://forums.fogproject.org/)
 > - [FOG Wiki](https://wiki.fogproject.org/)
 
-
-
-
 ## Installation
-
-### Debian als Basissystem
-
-Für FOG empfiehlt sich Debian als Basissystem. Verwenden Sie zur Installation die [auf diesem Projekt hinterlegte Anleitung](/betriebssysteme/debian).
-
-Dimensionierungsbeispiel der virtuellen Maschine für die Vorhaltung von 2 - 3 Images:
-
-- 1 CPU
-- 250 GB Festplattenspeicher
-- 4 GB Arbeitsspeicher
-- 1 Netzwerkkarte mit Zugriff auf das Netzwerk LAN_CLIENTS
 
 ### Notwendige Pakete installieren
 
@@ -66,7 +54,7 @@ Anschließend kehren Sie zur Konsole zurück und Drücken die Enter-Taste, um di
 
 Nun können Sie sich mit Benutzernamen "fog" und Passwort "password" auf der Weboberfläche von FOG anmelden. Bitte ändern Sie umgehend das Passwort von FOG unter "User Management" → "List all users".
 
-### Einstellungen im DHCP-Server (bei uns OPNsense)
+### Einstellungen im DHCP-Server (z. B. von OPNsense)
 
 Damit Clients beim Booten über das Netzwerk beim FOG-Server landen, müssen beim DHCP-Server folgende Einstellungen getätigt werden
 
@@ -91,6 +79,3 @@ cd bin
 
 # Beantworten Sie Fragen während des Update-Prozesses analog zu Ihren Antworten beim Installationsprozess (s. oben).
 ```
-
-- Testen Sie Ihren aktualisierten FOG-Server.
-- Nach erfolgreichem Test können Sie ggf. den zuvor erstellten Snapshot auf dem Virtualisierungs-Host entfernen.

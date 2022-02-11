@@ -1,3 +1,3 @@
-# OPNSense
+# OPNsense
 
 > An awesome project.

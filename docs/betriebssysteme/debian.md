@@ -7,9 +7,6 @@ Linux Debian ist ein weit verbreitetes und überaus stabiles Betriebssystem, wel
 > **Hilfreiche Links**
 > - [Debian Downloadseite](https://www.debian.org/CD/http-ftp/)
 > - [Wiki des Debian-Forums](https://wiki.debianforum.de/Hauptseite)
-> - [Wichtige Konsolenbefehle](https://www.shellbefehle.de/befehle/)
-> - [SSH-Consolen-Client Putty](https://www.putty.org/)
-> - [SCP-Dateitransfer-Client WinSCP](https://winscp.net)
 
 ## Installation
 

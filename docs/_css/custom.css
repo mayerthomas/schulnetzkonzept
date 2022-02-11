@@ -1,4 +1,4 @@
-.logo {
+img[src*="logo"] {
 	max-width:250px;
 }
 
