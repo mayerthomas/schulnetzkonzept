@@ -63,13 +63,11 @@ Damit Clients beim Booten über das Netzwerk beim FOG-Server landen, müssen bei
 - UEFI 32 bit file name : ipxe32.efi
 - UEFI 64 bit file name: ipxe.efi
 
-## Wartung
-
-### Update von FOG
+## Update von FOG
 
 Vor Updates empfiehlt sich das Anfertigen einer Sicherung, z. B. durch das Erstellen eines Snapshots auf dem Virtualisierungs-Host.
 
-Als FOG-Administrator können Sie unter "FOG Configuration" in Erfahrung bringen, ob Updates bereitstehen. Wenn ein Update bereitsteht, gehen Sie wie folgt vor:
+Als FOG-Administrator können Sie unter "FOG Configuration" in Erfahrung bringen, ob Updates bereitstehen. Wenn dem so ist, gehen Sie wie folgt vor:
 
 ```bash
 cd /root/fogproject
