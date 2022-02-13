@@ -6,15 +6,15 @@ Angaben gemäß § 5 TMG
 
 Thomas Mayer  
 tmtec IT-Services  
-by Thomas Mayer  
+
 Dr.-Julius-Mayr-Str. 17  
 94094 Rotthalmünster
 
 Kontakt
 -------
 
-Telefon: 01632807981  
-E-Mail: info@schulnetzkonzept.de
+Telefon: 0163 2807981  
+E-Mail: [info@schulnetzkonzept.de](mailto:info@schulnetzkonzept.de)
 
 Verbraucher­streit­beilegung/Universal­schlichtungs­stelle
 ----------------------------------------------------------

@@ -1,3 +1,0 @@
-# Windows
-
-> An awesome project.

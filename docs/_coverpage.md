@@ -8,6 +8,4 @@
 - datenschutzkonform
 - modular
 
-BerR Tom Mayer
-
 [Weiter lesen](#das-konzept)

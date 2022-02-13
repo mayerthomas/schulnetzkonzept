@@ -6,7 +6,7 @@ Im Schulnetzkonzept werden zwei physische Netzwerkkarten verwendet, wobei eine K
 
 > **Mögliche Einstellungen im Virtualisierunghost:**
 > - Erzeugen Sie in den Netzwerkeinstellungen des Hosts zwei Bridges und ordnen Sie jedem jeweils eine physikalische Netzwerkkarte (eine für LAN, eine für WAN) zu.
-> - Um die Verwaltungsoberfläche des Virtualisierungs-Hosts über LAN nutzen zu können, vergeben Sie der der LAN-Netzwerkkarte zugeordneten Bridge eine entsprechende feste interne IP.
+> - Um die Verwaltungsoberfläche des Virtualisierungs-Hosts über LAN nutzen zu können, vergeben Sie der LAN-Netzwerkkarte zugeordneten Bridge eine entsprechende feste interne IP.
 
 ## Virtuelles Netzwerk
 

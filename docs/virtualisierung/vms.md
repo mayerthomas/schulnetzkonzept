@@ -4,7 +4,7 @@
 
 ![logo proxmox](../_media/logo_proxmox.png "Provided by proxmox.com")
 
-Für die Umsetzung des Schulnetzkonzepts werden virtuelle Maschinen auf der Basis von Proxmox eingesetzt. Für deren Betrieb benötigen Sie einen entsprechend ausgestatteten und für die Virtualisierung geeigneten Server.
+Für die Umsetzung des Schulnetzkonzepts werden virtuelle Maschinen mit Proxmox als Virtualisierungshost eingesetzt. Hierzu benötigt man einen entsprechend ausgestatteten und für die Virtualisierung geeigneten Server.
 
 > An meiner Schule mit ca. 700 Schülerinnen und Schülern und 65 Lehrkräften ist ein Server mit folgenden Eckdaten im Einsatz:
 > - Prozessor: 2 x Intel Xeon E5 (2,2 GHz, 15 MB, 6 Kerne)
@@ -21,8 +21,6 @@ Selbstverständlich lässt sich das Schulnetzkonzept auch mit anderen Virtualisi
 > - [Proxmox Downloadseite](https://www.proxmox.com/de/downloads)
 > - [Installationsanleitung Proxmox](https://pve.proxmox.com/wiki/Installation)
 > - [Proxmox-Wiki](https://pve.proxmox.com/wiki/Main_Page)
-> - [SSH-Consolen-Client Putty](https://www.putty.org/)
-> - [SCP-Dateitransfer-Client WinSCP](https://winscp.net)
 
 ## Virtuelle Maschinen im Schulnetzkonzept
 
@@ -88,4 +86,4 @@ Folgende virtuelle Maschinen werden an unserer Schule mit ca. 700 Schülerinnen 
 >   - Internetanbindung mit 1 Gbit/s duplex
 > - Installierte Software
 >   - [Jitis Meet](software/jitis-meet)
-> - **Wichtiger Hinweis:** Um die für Jitsi notwendige Bandbreite (ca. 2 MBit/s je Teilnehmer) sicherstellen zu können, empfiehlt sich die datenschutzkonforme Installation der erforderlichen Komponenten auf einer virtuellen Maschine bei einem gut angebundenen deutschen Hoster und nicht im eigenen Schulnetz.
+> - **Wichtiger Hinweis:** Je Videokonferenzteilnehmer ist eine Bandbreite von  ca. 2 MBit/s erforderlich. Sofern Sie die für mehrere gleichzeitige Teilnehmer erforderlichen Übertragungsraten am Schulstandort nicht gewährleisten können, empfiehlt sich die datenschutzkonforme Installation von Jitsi Meet bei einem entsprechend angebundenen externen Hoster.
