@@ -5,3 +5,11 @@ img[src*="logo"] {
 .sidebar>h1 img {
     max-width: 150px;
 }
+
+.docsify-tabs__tab {
+    cursor: pointer;
+}
+
+.docsify-tabs__tab:hover {
+    box-shadow: inset 0 var(--docsifytabs-tab-highlight-px) 0 0 var(--docsifytabs-tab-highlight-color);
+}
