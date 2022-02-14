@@ -48,7 +48,7 @@ cd /root/fogproject/bin
 > - Änderung des Hostnamens: N
 > - Installation Fortsetzen: Y (wish to coninue)
 
-Wenn die Installation an der Zeile "Press \[Enter\] key when database is updated/installed." angelangt ist, rufen Sie über den Browser die Weboberfläche von FOG auf: http://10.1.1.1/fog und klicken dort auf den Button "INSTALL/UPGRADE NOW".
+Wenn die Installation an der Zeile "Press [Enter] key when database is updated/installed." angelangt ist, rufen Sie über den Browser die Weboberfläche von FOG (z. B. http://10.1.1.1/fog) auf und klicken dort auf den Button "INSTALL/UPGRADE NOW".
 
 Anschließend kehren Sie zur Konsole zurück und Drücken die Enter-Taste, um die Installation abzuschließen.
 
@@ -58,7 +58,7 @@ Nun können Sie sich mit Benutzernamen "fog" und Passwort "password" auf der Web
 
 Damit Clients beim Booten über das Netzwerk beim FOG-Server landen, müssen beim DHCP-Server folgende Einstellungen getätigt werden
 
-- next-server: 10.1.1.1 (IP Ihres FOG-Servers)
+- next-server: z. B. 10.1.1.1 (IP Ihres FOG-Servers)
 - filename: undionly.kpxe
 - UEFI 32 bit file name : ipxe32.efi
 - UEFI 64 bit file name: ipxe.efi
@@ -77,3 +77,72 @@ cd bin
 
 # Beantworten Sie Fragen während des Update-Prozesses analog zu Ihren Antworten beim Installationsprozess (s. oben).
 ```
+
+## Software-Deployment für Windows-Clients
+
+### Winget und FOG-Snapins
+Mit Winget stellt Microsoft ein Tool zur Verfügung, mit dem sich zahlreiche Programme mit einem einzigen Befehl über die Kommandozeile installieren, udaten oder deinstallieren lassen. Winget ist ab Windows 11 vorinstalliert. Für Windows 10 muss das Programm [App-Installer](https://www.microsoft.com/en-us/p/app-installer/9nblggh4nns1) in seiner aktuellsten Version installiert werden, um Winget nutzen zu können. 
+
+Mithilfe der FOG-Snapins können in .bat-Dateien hinterlegte Winget-Befehle an Windows-Clients im Netzwerk gesendet werden.
+
+### Beispiele für Winget-Befehle
+
+Starten Sie zum Ausführen von winget-Befehlen eine Kommandozeile mit Administrator-Berechtigungen.
+
+```batch
+:: Suche nach Programmen mit dem Begriff "firefox"
+winget install firefox
+
+:: Automatische Installation des Pakets mit der id "Mozilla.Firefox"
+winget install -h --id Mozilla.Firefox
+
+:: Automatische Deinstallation des Pakets mit der id "Mozilla.Firefox"
+winget uninstall -h --id Mozilla.Firefox
+
+:: Automatische Aktualisierung des Pakets mit der id "Mozilla.Firefox"
+winget upgrade -h --id Mozilla.Firefox
+
+:: Automatische Aktualisierung aller Pakete, welche über winget verfügbar sind
+winget upgrade -h --all
+
+:: Anzeige installierter Pakete
+winget list
+
+:: Anzeigen der allgemeinen Hilfe für Winget
+winget --help
+
+:: Anzeigen der Hilfe für das Teilprogramm install von Winget
+winget install --help
+```
+
+?> Anstelle der Konsole kann für die Suche von Programmen auch die Webseite [winget.run](https://winget.run/) verwendet werden. Diese zeigt für gefundene Anwendungen entsprechende Installationsbefehle an.
+
+### Beispiel für FOG-Snapin mit Winget-Befehlen
+
+#### Datei Browser-Installation.bat erzeugen
+
+```batch
+:: Datei Browser-Installation.bat
+winget install -h --id Mozilla.Firefox
+winget install -h --id Opera.Opera
+```
+
+#### Snapin in FOG anlegen
+
+- Snapins → Create New Snapin
+- Snapin Name: z. B. Browser-Installation
+- Snapin Type: Normal Snapin
+- Snapin Template: Batch Script
+- Snapin Run With: cmd.exe
+- Snapin Run With Argument: /c
+- Datei hochladen: z. B. Browser-Installation.bat
+- Reboot after install: Haken entfernen
+- Create new Snapin: Klick auf "Add"
+
+#### Snapin über FOG auf Computer ausführen
+
+- Hosts → List all Hosts → Host anklicken
+- Basic Tasks → Advanced → Single Snapin
+- Snapin im Dropdown auswählen → Klick auf "Task"
+
+?> Snapins können auch auf mehreren Hosts gleichzeitig ausgeführt werden. Dazu legt man eine Gruppe mit den gewünschten Hosts an und führt das Snapin für die Gruppe aus.
