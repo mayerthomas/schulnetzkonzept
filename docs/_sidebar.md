@@ -8,7 +8,7 @@
   - [Debian](betriebssysteme/debian.md)
   - [Ubuntu](betriebssysteme/ubuntu.md)
   - [OPNsense](betriebssysteme/opnsense.md)
-  - [Raspbian Lite](betriebssysteme/raspbian-lite.md)
+  - [Raspberry Pi OS](betriebssysteme/raspberry-pi-os.md)
 - **Software**
   - [Samba](software/samba.md)
   - [LDAP-Account-Manager](software/ldap-account-manager.md)
