@@ -2,7 +2,7 @@
 
 ![logo raspberry pi os lite](../_media/logo_raspberry-pi-os.png "Provided by raspberry.com")
 
-Raspberry Pi OS Lite ist ein sehr kleines, auf Debian basierendes System für den Raspberry Pi, einem preiswerten und stromsparenden Einplatinencomputer.
+Raspberry Pi OS Lite ist ein sehr kleines, auf Debian basierendem System für den Raspberry Pi, einem preiswerten und stromsparenden Einplatinencomputer.
 
 > **Hilfreiche Links**
 > - [Offizielle Webseite des Raspberry Pi](https://www.raspberrypi.com/)
