@@ -81,9 +81,9 @@ cd bin
 ## Software-Deployment für Windows-Clients
 
 ### Winget und FOG-Snapins
-Mit Winget stellt Microsoft ein Tool zur Verfügung, mit dem sich zahlreiche Programme mit einem einzigen Befehl über die Kommandozeile installieren, udaten oder deinstallieren lassen. Winget ist ab Windows 11 vorinstalliert. Für Windows 10 muss das Programm [App-Installer](https://www.microsoft.com/en-us/p/app-installer/9nblggh4nns1) in seiner aktuellsten Version installiert werden, um Winget nutzen zu können. 
+Mit Winget stellt Microsoft ein Tool zur Verfügung, mit dem sich zahlreiche Programme mit einem einzigen Befehl über die Kommandozeile installieren, updaten oder deinstallieren lassen. Winget ist ab Windows 11 vorinstalliert. Für Windows 10 muss das Programm [App-Installer](https://www.microsoft.com/en-us/p/app-installer/9nblggh4nns1) in seiner aktuellsten Version installiert werden, um Winget nutzen zu können. 
 
-Mithilfe der FOG-Snapins können in .bat-Dateien hinterlegte Winget-Befehle an Windows-Clients im Netzwerk gesendet werden.
+Mithilfe der FOG-Snapins können in .bat-Dateien hinterlegte Winget-Befehle an Windows-Clients im Netzwerk gesendet werden. Hierzu muss auf den Windows-Clients der FOG-Client installiert werden. Die Installationsdatei für den FOG-Client finden Sie auf der Webseite Ihrer FOG-Installation im Footer.
 
 ### Beispiele für Winget-Befehle
 
