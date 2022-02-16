@@ -2,7 +2,9 @@
 
 ![logo fog-project](../_media/logo_fog-project.png "Provided by fogproject.org")
 
-Mit der Open-Source-Software FOG können Sie über das Netzwerk selbst erstellte Images auf zahlreiche Computer gleichzeitig verteilen. 
+Mit FOG können Sie über das Netzwerk selbst erstellte Images auf zahlreiche Computer gleichzeitig verteilen. 
+
+?> Die aktuellen Beschreibungen basieren auf FOG in der Version 1.5.
 
 > **Wichtige Funktion von FOG**
 > - Inventarisierung und Gruppierung von Computersystemen
@@ -10,8 +12,6 @@ Mit der Open-Source-Software FOG können Sie über das Netzwerk selbst erstellte
 > - Snapins: Verteilung/Ausführung von Dateien und Skripten (z. B. zum Softwaredeployment oder zur Änderung von Einstellungen)
 > - Energieverwaltung von Computersystemen (z. B. Fernabschaltung zu definierten Zeiten)
 > - uvm.
-
-Die aktuellen Beschreibungen basieren auf FOG in der Version 1.5.
 
 > **Hilfreiche Links**
 > - [FOG Projektseite](https://fogproject.org/)
