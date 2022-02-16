@@ -364,7 +364,7 @@ sudo -u www-data php updater/updater.phar
 # Die Fragen zum Update mit Y (Yes) beantworten.
 # Die Frage nach Beibehaltung des Wartungsmodus mit N (No) beantworten.
 
-# Sollte es während des Uprade-Prozesses zu Fehlern kommen, kann dieser mit folgendem Befehl erneut angestoßen werden:
+# Sollte es während des Upgrade-Prozesses zu Fehlern kommen, kann dieser mit folgendem Befehl erneut angestoßen werden:
 sudo -u www-data php occ upgrade
 ```
 
