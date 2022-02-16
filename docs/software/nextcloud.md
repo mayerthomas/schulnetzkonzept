@@ -203,7 +203,7 @@ chown www-data:www-data /srv/nextcloud-data/
     *   Datenverzeichnis: /srv/nextcloud-data
     *   Datenbank: MySQL/MariaDB
     *   Datenbank-Benutzer: nextcloud
-    *   Datenbank-Passwort: <dbuser-nextcloud-pw>
+    *   Datenbank-Passwort: \<dbuser-nextcloud-pw\>
     *   Datenbank-Name: nextcloud
     *   Datenbank-Host: localhost
 
