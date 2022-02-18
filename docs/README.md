@@ -1,6 +1,6 @@
 # Das Konzept
 
-Als Schul-Systembetreuer und Informatiklehrer möchte ich meine Dokumentationen zur Realisierung von Lösungen für Schulnetzwerke mit Ihnen teilen.
+Als Systembetreuer und Informatiklehrer möchte ich meine Dokumentationen zur Realisierung von Lösungen für Schulnetzwerke mit Ihnen teilen.
 
 ## Skizze zum Schulnetzkonzept
 
