@@ -11,13 +11,17 @@ Raspberry Pi OS Lite ist ein sehr kleines, auf Debian basierendem System für de
 
 ## Installation
 
-### Raspberry Pi OS auf SD-Karte kopieren
+### Raspberry Pi OS Lite auf SD-Karte kopieren
 
-Am einfachsten kopieren Sie das benötigte Image (Raspberry Pi OS (other) → Raspberry Pi OS (64-bit)) mit dem Raspberry Pi Imager (Link s. oben) auf eine Micro-SD-Karte. In der Regel genügt ein sehr kleines Medium (z. B. 4 GB). Stecken Sie die SD-Karte nach erfolgreichem Kopiervorgang in den Raspberry Pi.
+Am einfachsten kopieren Sie das benötigte Image (Raspberry Pi OS (other) → Raspberry Pi OS Lite (64-bit)) mit dem Raspberry Pi Imager (Link s. oben) auf eine Micro-SD-Karte. In der Regel genügt ein sehr kleines Medium (z. B. 4 GB). Stecken Sie die SD-Karte nach erfolgreichem Kopiervorgang in den Raspberry Pi.
 
 ### Erster Start
 
 Booten Sie den Raspberry Pi, indem Sie ihn mit einer Stromquelle verbinden und melden sich erstmalig mit den Initial-Zugangsdaten (User: pi / PW: raspberry) an.
+
+?> Berücksichtigen Sie bei Eingaben auf der Konsole die standardmäßig eingestellte [englische Tastaturbelegung](https://de.wikipedia.org/wiki/Tastaturbelegung#USA).\
+Auf einer QWERTZ-Tastatur tippen Sie für das Standard-Passwort also: raspberr**z**\
+Da später auf den Raspberry Pi per ssh zugegriffen wird, ist eine Änderung der Tastaturbelegung für die Konsole eigentlich nicht erforderlich. 
 
 ### Grundkonfiguration
 
@@ -25,35 +29,43 @@ Warten Sie ggf. die Update-Routine ab und starten Sie im Anschluss die initiale,
 
 ```bash
     sudo raspi-config
+	### Auf einer QWERTZ-Tastatur tippen Sie: sudo raspißconfig
 ```
-
-?> Sollte das Tastaturlayout noch nicht stimmen, orientieren Sie sich vorübergehend an der US-Tastaturbelegung: [https://de.wikipedia.org/wiki/Tastaturbelegung#USA](https://de.wikipedia.org/wiki/Tastaturbelegung#USA).
 
 #### Mögliche Einstellungen in raspi-config
 
 *   System Options
-    *   Wireless LAN → ggf. hier Zugangsdaten für WLAN hinterlegen
+    *   Wireless LAN
+		* Country
+		* SSID
+		* Passphrase
     *   Password → Passwort für User pi ändern
     *   Hostname → ggf. Netzwerknamen des Rasperry Pi einstellen
-    *   Boot / Auto Login → Console Autologin wählen
+    *   Boot / Auto Login → Console Autologin wählen (sofern sie den Raspberry Pi als Digital-Signage-System verwenden möchten)
 *   Display Options  
     *   Underscan → ggf. schwarze Display-Umrandung entfernen
     *   Screenblanking → mit "Yes" aktivieren
 *   Interface Options  
     *   SSH → mit "Yes" aktivieren
 *   Localisation Options
-    *   Locale: de\_DE.UTF-8 aktivieren und als default locale festlegen
+    *   Locale bzw. Default locale: z. B. de_DE.UTF-8
     *   Timezone: Europe/Berlin
-    *   ggf. WLAN-Country festlegen
 *   Advanced Options
     *   Expand Filesystem
 
-Anschließend starten Sie das System mit "Reboot" neu.
+Anschließend beenden Sie raspi-config ("Finish") und beantworten die Frage nach einem Reboot mit "Ja".
 
 ### IP-Adresse herausfinden
 
-Um nachfolgend den Raspberry Pi von der Ferne per SSH bedienen zu können bzw. um ggf. notwendige Firewalleinstellungen tätigen zu können, muss die IP-Adresse und ggf. auch die MAC-Adresse der aktiven Netzwerkkarte ermittelt werden:
+Um nachfolgend den Raspberry Pi von der Ferne per SSH bedienen zu können, muss die IP-Adresse und ggf. auch die MAC-Adresse der aktiven Netzwerkkarte ermittelt werden:
 
 ```bash
     sudo ip address
+```
+
+## Update von Raspberry Pi OS Lite
+
+```bash
+# Paketlisten aktualisieren und installierte Pakete updaten
+sudo apt update && sudo apt upgrade -y
 ```

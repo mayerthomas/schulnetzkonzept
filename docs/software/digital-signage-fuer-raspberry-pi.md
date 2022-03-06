@@ -11,7 +11,7 @@ Die im Folgenden dargestellte Variante startet lediglich einen Browser mit einer
 sudo apt update && sudo apt upgrade -y
     
 # Notwendige Software installieren
-sudo apt install --no-install-recommends xserver-xorg x11-xserver-utils xinit openbox xdotool chromium-browser unclutter -y
+sudo apt install --no-install-recommends xserver-xorg x11-xserver-utils xinit openbox xdotool chromium-browser -y
 ```
 
 ## Skript für automatisches Neuladen des Chrome-Browsers erstellen
@@ -56,10 +56,8 @@ unclutter
 # Beenden des X-Servers via Strg+Alt+Backspace
 setxkbmap -option terminate:ctrl_alt_bksp
 
-# Chromium zurücksetzen und im Kiosk-Modus mit gewünschter URL starten
-sed -i 's/"exited_cleanly":false/"exited_cleanly":true/' ~/.config/chromium/'Local State'
-sed -i 's/"exited_cleanly":false/"exited_cleanly":true/; s/"exit_type":"[^"]\+"/"exit_type":"Normal"/' ~/.config/chromium/Default/Preferences
-chromium-browser --disable-infobars --disable-features=Translate --kiosk 'https://www.wikipedia.org'
+# Chromium im Kiosk-Modus mit gewünschter URL starten
+chromium-browser --kiosk --touch-events=enabled --disable-pinch --noerrdialogs --disable-session-crashed-bubble --simulate-outdated-no-au='Tue, 31 Dec 2099 23:59:59 GMT' --disable-component-update --overscroll-history-navigation=0 --disable-features=Translate --app=https://de.wikipedia.org
 ```
 
 !> Ersetzen Sie in obiger Datei die URL https://www.wikipedia.org durch die anzuzeigende Webseite.
