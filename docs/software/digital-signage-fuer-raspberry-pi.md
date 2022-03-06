@@ -62,7 +62,7 @@ chromium-browser --kiosk --touch-events=enabled --disable-pinch --noerrdialogs -
 
 !> Ersetzen Sie in obiger Datei die URL https://www.wikipedia.org durch die anzuzeigende Webseite.
 
-## X-Servers ohne Cursor nach Console-Autologin automatisch starten
+## X-Server ohne Cursor nach Console-Autologin automatisch starten
 
 ```bash
 nano /home/pi/.bash_profile
