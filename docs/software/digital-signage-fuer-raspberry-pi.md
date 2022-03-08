@@ -50,9 +50,6 @@ xset s off
 xset s noblank
 xset -dpms
 
-# Mauszeiger bei Nichtgebrauch ausblenden
-unclutter
-
 # Beenden des X-Servers via Strg+Alt+Backspace
 setxkbmap -option terminate:ctrl_alt_bksp
 
@@ -122,7 +119,7 @@ sudo reboot
 
 Manche Setups erfordern weitere Anpassungen am Browser (z. B. das Deaktivieren des Angebots von Übersetzungen). Um den Browser mit Menü bzw. Einstellungsmöglichkeiten zu starten, gehen Sie wie folgt vor:
 
-- Am Raspberry Pi mit Tastenkombination Strg+Alt+Backspace den X-Server schließen
+- Am Raspberry Pi mit angeschlossener Tastatur und Tastenkombination Strg+Alt+Backspace den X-Server schließen
 - Auf Konsole einen neuen X-Server mit Cursor starten: startx
 - Mit Tastenkombination Alt+F4 Chromium im Kiosk-Modus schließen
 - Rechtsklick auf Desktop → Web Browser
