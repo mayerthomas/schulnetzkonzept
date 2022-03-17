@@ -77,7 +77,7 @@ Folgende virtuelle Maschinen werden an unserer Schule mit ca. 700 Schülerinnen 
 >   - [Collabora](software/collabora)
 
 > ### VM für Jitsi Meet
-> - Betriebssystem: [Ubuntu](betriebssysteme/ubuntu)
+> - Betriebssystem: [Debian](betriebssysteme/debian)
 > - Dimensionierung der VM
 >   - mind. 4 CPUs
 >   - 40 GB Festplattenspeicher

@@ -6,7 +6,6 @@
   - [VLANs](virtualisierung/vlans.md)
 - **Betriebssysteme**
   - [Debian](betriebssysteme/debian.md)
-  - [Ubuntu](betriebssysteme/ubuntu.md)
   - [OPNsense](betriebssysteme/opnsense.md)
   - [Raspberry Pi OS](betriebssysteme/raspberry-pi-os.md)
 - **Software**
