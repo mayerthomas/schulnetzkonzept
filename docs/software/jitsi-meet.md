@@ -2,7 +2,6 @@
 
 ![logo jitsi-meet](../_media/logo_jitsi-meet.png "Provided by jitsi.org")
 
-
 Jitsi ist eine Sammlung freier Software u. a. für Videokonferenzen und Instant Messaging. Unter bestimmten Voraussetzungen (Bandbreite, Server-Kapazität) können parallel stattfindende Videokonferenzen mit sehr vielen Teilnehmern durchgeführt werden.
 
 Die nachfolgend dargestellte Installation hat mehrere Tests mit 60 gleichzeitigen Teilnehmern ohne Probleme absolviert. Bei mehrheitlich aktivierten Kameras der Teilnehmer lag die Auslastung von CPU und RAM bei ca. 70 %, bei überwiegend deaktivierten Kameras bei ca. 10 %. Der eingehende Datenverkehr belief sich bei einem 45-minütigen Test auf ca. 13 GByte bei einer durchschnittlichen Bandbreite von 16 Mbit/s. Der ausgehende Datenverkehr betrug ca. 22 GByte bei einer Bandbreite von durchschnittlich 43 MBit/s. Ich vermute, dass das System mit den hier angegebenen Mindestanforderungen mit insgesamt 100 gleichzeitigen Teilnehmern - verteilt auf einen oder mehrere Räume - gut umgehen kann.
@@ -27,7 +26,7 @@ Für viele gleichzeitige Videokonferenzen mit mehr als 100 Teilnehmern kann man 
 
 ## Voraussetzungen
 
-Um die für Jitsi Meet notwendige Bandbreite (ca. 2 MBit/s je Teilnehmer) sicherstellen zu können, empfiehlt sich die datenschutzkonforme Installation der erforderlichen Komponenten auf einer virtuellen Maschine bei einem gut angebundenen deutschen Hoster und nicht im eigenen Schulnetz.
+Um die für Jitsi Meet notwendige Bandbreite (ca. 2 MBit/s je Teilnehmer) sicherstellen zu können, empfiehlt sich die datenschutzkonforme Installation der erforderlichen Komponenten auf einer virtuellen Maschine mit Debian bei einem gut angebundenen externen Hoster statt im eigenen Schulnetz.
 
 Die Mindestanforderungen sollten sich mit ca. 10 bis 15 Euro monatlich abdecken lassen:
 
@@ -36,14 +35,31 @@ Die Mindestanforderungen sollten sich mit ca. 10 bis 15 Euro monatlich abdecken 
 * mindestens 32 GB Festplattenspeicher
 * Internetanbindung mit 1 Gbit/s duplex
 
-Selbstverständlich können bei entsprechender Bandbreite und Serverinfrastruktur die erforderlichen Komponenten auch im eigenen Schulnetz installiert werden. Hier müssten dann gem. der [OPNsense-Anleitung](betriebssysteme/opnsense.md) des Schulnetzkonzepts entsprechende Einstellungen im HAProxy und für die Zertifikatsvergabe getätigt werden.
+Selbstverständlich können bei entsprechender Bandbreite und Serverinfrastruktur die erforderlichen Komponenten auch im eigenen Schulnetz installiert werden. Hier müssen dann gem. der [OPNsense-Anleitung](betriebssysteme/opnsense.md) des Schulnetzkonzepts entsprechende Einstellungen im DNS, im HAProxy und für die Zertifikatsvergabe getätigt werden.
 
-Weitere Voraussetzungen:
-
-* Debian-Server mit SSH-Zugriff
-* Eine Subdomain, welche mittels A- oder CNAME-Record auf den Debian-Server zeigt, z. B. meet.ihre-schule.de
+Weiterhin muss eine Domain oder Subdomain eingerichtet werden, welche mittels A- oder CNAME-Record auf den Server zeigt, z. B. meet.ihre-schule.de.
 
 ## Installation
+
+### Hostnamen im System festlegen
+
+```bash
+# Ersetzen Sie "meet.ihre-schule.de" entsprechend:
+sudo hostnamectl set-hostname meet.ihre-schule.de
+```
+
+Sofern Sie den Server bei einem externen Anbieter hosten, ergänzen Sie in der Hosts-Datei die öffentliche IP-Adresse und den Hostnamen:
+
+```bash
+vim /etc/hosts
+```
+
+```bash
+# Datei /etc/hosts
+
+# Zeile ergänzen ("x.x.x.x" durch öffentliche IP ersetzen):
+x.x.x.x meet.ihre-schule.de
+```
 
 ### Paketquellen aktualisieren und erforderlicher Pakete installieren
 
@@ -63,7 +79,7 @@ sudo apt update
 
 ### Installation und Konfiguration der Firewall
 
-Da der virtuelle Server direkt beim Anbieter im Internet läuft, empfiehlt sich die Installation einer Firewall.
+Sofern Sie den Server bei einem externen Anbieter hosten, empfiehlt sich die Installation einer Firewall.
 
 ```bash
 # Installation der Firewall:
@@ -85,20 +101,15 @@ sudo ufw enable
 
 ```bash
 sudo apt install jitsi-meet
-
-# Beim Installationsprozess wird man nach dem Hostnamen gefragt.
-# Dieser muss mit der oben festgelegten Subdomain übereinstimmen: 
-# z. B. meet.ihre-schule.de
-# Weiterhin muss für die verschlüsselte Kommunikation ein Zertifikat
-# installiert werden. Hier wird empfohlen die Option 
-# "Generate a new self-signed certificate" zu verwenden.
-# Im weiteren Installationsverlauf wird dieses Zertifikat durch ein
-# Let's-Encrypt-Zertifikat ersetzt.
 ```
+
+?>Beim Installationsprozess wird man nach dem Hostnamen gefragt. Dieser muss mit der oben festgelegten Domäne übereinstimmen, z. B. meet.ihre-schule.de.\
+Weiterhin muss für die verschlüsselte Kommunikation ein Zertifikat installiert werden. Hier wird empfohlen die Option "Generate a new self-signed certificate" zu verwenden. Im nächsten Schritt wird dieses durch ein Let's-Encrypt-Zertifikat ersetzt.
+
 
 ### Installation eines Let's-Encrypt-Zertifikats
 
-Damit der Zugriff auf denn Jitsi Meet-Dienst verschlüsselt erfolgt, empfiehlt sich die Installation eines Zertifikats. Am einfachsten und zudem kostenlos erfolgt dies über Let's Encrypt.
+Damit der Zugriff auf denn Jitsi-Meet-Dienst verschlüsselt erfolgt, empfiehlt sich die Installation eines Zertifikats. Am einfachsten und zudem kostenlos erfolgt dies über Let's Encrypt.
 
 Während der Zertifikatsinstallation ist darauf zu achten, dass man eine gültige E-Mail-Adresse für Benachrichtigungen und die richtigen Hostnamen (z. B. meet.ihre-schule.de) angibt.
 
@@ -116,30 +127,30 @@ Auch die Konfiguration von Breakout-Rooms wird in diesem Abschnitt erläutert.
 
 ### Authentifizierung, Gäste-Login und Breakout-Rooms aktivieren
 
-Damit nicht jeder Besucher Ihrer Jitsi-Seite eine Videokonferenz initiieren kann, muss die Authentifizierung aktiviert werden. Damit aber trotzdem nicht authentifizierte Gäste an einer Konferenz teilnehmen können, muss zudem der Gäste-Login eingerichtet werden.
+Damit nicht jeder Besucher Ihres Jitsi-Servers eine Videokonferenz initiieren kann, muss die Authentifizierung aktiviert werden. Damit aber trotzdem nicht-authentifizierte Gäste an einer Konferenz teilnehmen können, wird zudem der Gäste-Login eingerichtet.
 
 ```bash
 # Achtung: passen Sie im nachfolgenden Befehl die Domänenangabe an!
-vim /etc/prosody/conf.avail/[meet.ihre-schule.de].cfg.lua
+vim /etc/prosody/conf.avail/meet.ihre-schule.de.cfg.lua
 ```
 
 ```bash
-# Datei /etc/prosody/conf.avail/\[meet.ihre-schule.de\].cfg.lua
+# Datei /etc/prosody/conf.avail/meet.ihre-schule.de.cfg.lua
 
-# Suchen Sie den zu Ihrer Domäne passenden Virtual-Host-Eintrag und ändern sie 
+# Suchen Sie den zu Ihrer Domäne passenden Virtual-Host-Eintrag und ändern Sie 
 # den Wert bei authentication von anonymous zu internal_hashed:
 VirtualHost "meet.ihre-schule.de"
     authentication = "internal_hashed"
     # ...
 
-# Für Breakout-Rooms innerhalb von modules_enabled {}
-# die Zeile "Muc_breakout_rooms"; ergänzen:
+# Für Breakout-Räume innerhalb von modules_enabled {}
+# die Zeile "muc_breakout_rooms"; ergänzen:
 modules_enabled = {
 	# ...
 	"muc_breakout_rooms";
 }
 
-# Für Breakout-Rooms unterhalb der Zeile main_muc
+# Für Breakout-Räume unterhalb der Zeile main_muc
 # die Zeile breakout_rooms_muc... ergänzen:
 main_muc = "conference.meet.ihre-schule.de"
 breakout_rooms_muc = "breakout.meet.ihre-schule.de"
@@ -164,17 +175,17 @@ Component "breakout.meet.ihre-schule.de" "muc"
 
 ```bash
 # Achtung: passen Sie im nachfolgenden Befehl die Domänenangabe an!
-vim /etc/jitsi/meet/[meet.ihre-schule.de]-config.js
+vim /etc/jitsi/meet/meet.ihre-schule.de-config.js
 ```
 
 ```bash
-# Datei /etc/jitsi/meet/\[meet.ihre-schule.de\]-config.js
+# Datei /etc/jitsi/meet/meet.ihre-schule.de-config.js
 
 # Ergänzen Sie unter Hots den Wert anonymousdomain, und passen Sie dabei den 
 # Domänennamen entsprechend an:
 var config = {
     hosts: {
-            domain: 'jitsi-meet.example.com',
+            domain: 'jitsi-meet.ihre-schule.de',
             anonymousdomain: 'guest.meet.ihre-schule.de',
             # ...
         },
@@ -252,6 +263,7 @@ Folgende Voraussetzungen müssen für die nachfolgende Beschreibung erfüllt sei
 
 * Der LDAP-Server ist via ldaps und Port 636 vom Internet aus erreichbar.
 * Der LDAP-Server ist verschlüsselt und über ein gültiges Zertifikat (z. B. via ldap.ihre-schule.de) erreichbar.
+* Ein Samba-User (z. B. svc_jitsi) mit Leseberechtigungen für das LDAP-Verzeichnis
 
 ### Erforderliche Pakete installieren
 
@@ -259,7 +271,7 @@ Folgende Voraussetzungen müssen für die nachfolgende Beschreibung erfüllt sei
 apt install sasl2-bin libsasl2-modules-ldap lua-cyrussasl
 ```
 ```bash
-# Datei /etc/prosody/conf.avail/\[meet.ihre-schule.de\].cfg.lua
+# Datei /etc/prosody/conf.avail/meet.ihre-schule.de.cfg.lua
 
 # Suchen Sie den zu Ihrer Domäne passenden Virtual-Host-Eintrag und ändern sie 
 # den Wert bei authentication zu cyrus:
