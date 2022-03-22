@@ -4,15 +4,15 @@
 
 ## Über
 
- - Dokumentationen zur Realisierung von Lösungen für Schulnetzwerke
- - Offizielle Projektseite: [schulnetzkonzept.de](https://schulnetzkonzept.de)
+- Dokumentationen zur Realisierung von Lösungen für Schulnetzwerke
+- Offizielle Projektseite: [schulnetzkonzept.de](https://schulnetzkonzept.de)
 
 ## Ziele
 
-> - Umsetzung mit Hilfe gut dokumentierter und stabiler Open-Source-Anwendungen
-> - Datenschutzkonforme Cloud- und Kollaborationslösungen
-> - Effizienz und Sicherheit durch Virtualisierung
-> - Keine All-In-One-Lösung sondern ausgesuchte Lösungen je Aufgabe
+- Umsetzung mit Hilfe gut dokumentierter und stabiler Open-Source-Anwendungen
+- Datenschutzkonforme Cloud- und Kollaborationslösungen
+- Effizienz und Sicherheit durch Virtualisierung
+- Keine All-In-One-Lösung sondern ausgesuchte Lösungen je Aufgabe
 
 ## Unterstützen Sie das Schulnetzkonzept!
 
