@@ -1,4 +1,4 @@
-# Schulnetzkonzept
+# Das Konzept
 
 Als Systembetreuer und Informatiklehrer möchte ich meine Dokumentationen zur Realisierung von Lösungen für Schulnetzwerke mit Ihnen teilen.
 
