@@ -1,3 +1,4 @@
 # Collabora für Nextcloud
 
-> An awesome project.
+> **Muss noch umgezogen werden**
+> - [Zur bisherigen Seite](https://old.schulnetzkonzept.de/collabora/)
