@@ -2,7 +2,7 @@
 
 ![logo nextcloud](../_media/logo_nextcloud.png "Provided by nextcloud.com")
 
-Mit Nextcloud speichern Sie Dateien datenschutzrechtlich einwandfrei auf Ihrem eigenen Server.
+Mit Nextcloud speichern Sie Dateien datenschutzkonform auf Ihrem eigenen Server.
 
 ?> Die aktuellen Beschreibungen basieren auf Nextcloud in der Version 23.
 
