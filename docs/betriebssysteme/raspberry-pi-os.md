@@ -41,7 +41,7 @@ Warten Sie ggf. die Update-Routine ab und starten Sie im Anschluss die initiale,
 		* Passphrase
     *   Password → Passwort für User pi ändern
     *   Hostname → ggf. Netzwerknamen des Rasperry Pi einstellen
-    *   Boot / Auto Login → Console Autologin wählen (sofern sie den Raspberry Pi als Digital-Signage-System verwenden möchten)
+    *   Boot / Auto Login → Console Autologin wählen (sofern Sie den Raspberry Pi als Digital-Signage-System verwenden möchten)
 *   Display Options  
     *   Underscan → ggf. schwarze Display-Umrandung entfernen
     *   Screenblanking → mit "Yes" aktivieren
