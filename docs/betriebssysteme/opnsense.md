@@ -12,10 +12,9 @@ Im Schulnetzkonzept kommt OPNsense aber nicht nur die Aufgabe der Firewall zu. V
 
 *   Firewall und NAT
 *   DNS-Server
+*   URL-Filter mit DNS-Blocklisten
 *   DHCP-Server
 *   NTP-Server
-*   Proxy-Server (nur für Schülernetz LAN_SCHUELER)
-*   URL-Filter (nur für Schülernetz LAN_SCHUELER)
 *   Reverse-Proxy
 *   Zertifikatsmanagement
 *   VPN-Server
@@ -34,11 +33,7 @@ Im Schulnetzkonzept kommt OPNsense aber nicht nur die Aufgabe der Firewall zu. V
    *   2 CPU
    *   100 GB Festplattenspeicher
    *   8 GB Arbeitsspeicher
-   *   4 Netzwerkkarten mit Zugriff auf das interne LAN-Netzwerk mit folgenden VLANs:
-       *   VLAN 10 untagged für LAN_MANAGEMENT
-       *   VLAN 11 für LAN_SERVER
-       *   VLAN 12 für LAN_SCHULGERAETE
-       *   VLAN 13 für LAN_BYOD
+   *   4 Netzwerkkarten mit Zugriff auf das interne LAN-Netzwerk mit den unter [VLANs beschriebenen VLAN-Einstellugen](virtualisierung/vlans?id=virtuelles-netzwerk).
    *   1 Netzwerkkarte mit Zugriff auf das externe WAN-Netzwerk
 4. In den Einstellungen zur virtuellen Maschine beim CD-Laufwerk das OPNsense-Image einbinden und das CD-Laufwerk als primäres Bootmedium festlegen.
 5. Die virtuelle Maschine einschalten und das Konsolenfenster öffnen. Nun sollte der Installationsassistent von OPNsense zu sehen sein.
@@ -131,7 +126,7 @@ Die Konfiguration der Interfaces erfolgt über Interfaces / <[Interfacename]>.
 > Folgende Einstellungen sind je **WAN-Interface** zu tätigen:
 > * Basic Configuration
 >   * Haken bei "Enable interface"
->   * Description: z. B.: WAN1
+>   * Description: z. B.: WAN_1
 > * Generic Configuration
 >   * Haken bei "Block private networks"
 >   * Haken bei "Block bogon networks"

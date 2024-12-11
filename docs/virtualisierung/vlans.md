@@ -2,15 +2,22 @@
 
 ## Physisches Netzwerk
 
-Im Schulnetzkonzept werden zwei physische Netzwerkkarten verwendet, wobei eine Karte mit dem internen Schulnetz und die andere mit dem Internet verbunden wird. 
+Im Schulnetzkonzept wird eine physische Netzwerkkarten verwendet. Es empfiehlt sich eine Glasfaser-Karte mit einer Geschwindigkeit von 10 Gbit/s. 
 
-> **Mögliche Einstellungen im Virtualisierunghost:**
-> - Erzeugen Sie in den Netzwerkeinstellungen des Hosts zwei Bridges und ordnen Sie jedem jeweils eine physikalische Netzwerkkarte (eine für LAN, eine für WAN) zu.
-> - Um die Verwaltungsoberfläche des Virtualisierungs-Hosts über LAN nutzen zu können, vergeben Sie der LAN-Netzwerkkarte zugeordneten Bridge eine entsprechende feste interne IP.
+**Mögliche Einstellungen für einen Proxmox-Virtualisierunghost:**
+> VM-Host → Network → Create: Linux Bridge
+> * Name: z. B. vmbr0
+> * IPv4/CIDR: 10.1.254.10/24
+> * Gateway (IPv4): 10.1.254.1 (OPNsense-Interface LAN_MANAGEMENT)
+> * Haken bei "Autostart"
+> * Haken bei "VLAN aware"
+> * Bridge ports: <Name der verwendeten Netzwerkkarte>
+
+Die Verwaltungsoberfläche von Proxmox kann über die an die Linux-Bridge vergebebe IP erreicht werden.
 
 ## Virtuelles Netzwerk
 
-Aus Sicherheits- und Performancegründen sollte das interne Schulnetz in mehrere Subnetze aufgeteilt werden. Die Realisierung im Schulnetzkonzept erfolgt über VLAN-fähige Switche.
+Aus Sicherheits- und Performancegründen wird das Schulnetz in mehrere Netze aufgeteilt. Die Realisierung im Schulnetzkonzept erfolgt über VLAN-fähige Switche.
 
 **Mögliche VLAN-Einteilung:**
 
@@ -69,6 +76,26 @@ Aus Sicherheits- und Performancegründen sollte das interne Schulnetz in mehrere
 | --------------------- | ----------------------------------------------------------- | ------------------------------- |
 | 13 VA	                | OPNsense-Interface LAN_BYOD                                 | 10.1.16.1                       | 
 | s. Access-Points      | DHCP-Bereich (WLAN-Clients)                                 | 10.1.27.1 - 10.1.31.254         | 
+
+#### **WAN_1**
+
+- VLAN: 21
+- Subnetz: 192.168.1.0/24
+
+| VLAN                  | Netzwerkteilnehmer                                          | IP/IP-Bereich                   |
+| --------------------- | ----------------------------------------------------------- | ------------------------------- |
+| 21 VA	                | OPNsense-Interface WAN_1                                    | 192.168.1.1                     | 
+| 21 u SP               | Router 1. Internetanschluss (z. B. FritzBox)                | 192.168.1.254                   | 
+
+#### **WAN_2**
+?>Die Verwendung einer 2. WAN-Schnittstelle ist optional. Sie ermöglicht bei Ausfall eines Internetanschlusses einen Failover-Betrieb.
+- VLAN: 22
+- Subnetz: 192.168.2.0/24
+
+| VLAN                  | Netzwerkteilnehmer                                          | IP/IP-Bereich                   |
+| --------------------- | ----------------------------------------------------------- | ------------------------------- |
+| 22 VA	                | OPNsense-Interface WAN_2                                    | 192.168.2.1                     | 
+| 22 u SP               | Router 2. Internetanschluss (z. B. FritzBox)                | 192.168.2.254                   | 
 
 <!-- tabs:end -->
 

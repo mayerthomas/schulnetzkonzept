@@ -11,7 +11,7 @@ Für die Umsetzung des Schulnetzkonzepts werden virtuelle Maschinen mit Proxmox 
 > - Speicher: 4 x 16 GB DDR3
 > - Festplatten: 5 x 600 GB, 10k SAS
 > - Controller: SAS Raid Controller 6G, 1 GB Speicher
-> - Netzwerkkarten: 2 x Gigabit
+> - Netzwerkkarten: 1 x 10 Gigabit Glasfaser
 
 Proxmox kann in einer kostenfreien No-Subscription-Version genutzt werden und bietet in einer benutzerfreundlichen Webschnittstelle neben den üblichen Virtualisierungsmöglichkeiten auch das erstellen von Backups und Replikationen.
 
