@@ -4,7 +4,7 @@
 
 Mit Nextcloud speichern Sie Dateien datenschutzkonform auf Ihrem eigenen Server.
 
-?> Die aktuellen Beschreibungen basieren auf Nextcloud in der Version 23.
+?> Die aktuellen Beschreibungen basieren auf Nextcloud in der Version 30.
 
 > **Wichtige Funktionen der Nextcloud**
 > - Umgang mit Dateien
@@ -27,23 +27,22 @@ Mit Nextcloud speichern Sie Dateien datenschutzkonform auf Ihrem eigenen Server.
 
 ```bash
 # Notwendige Tools
-apt install sudo zip unzip -y
+apt install sudo zip unzip imagemagick -y
     
-# Aktuelleres PHP (8.0) als das vom Debian-Repository (7.3) installieren
-sudo apt -y install lsb-release apt-transport-https ca-certificates wget
-sudo wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg
-echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/php.list
-apt update
-apt install php8.0 php8.0-common php8.0-cli
+# Aktuelleres PHP (8.3) als das vom Debian-Repository installieren
+sudo apt install apt-transport-https
+sudo curl -sSLo /usr/share/keyrings/deb.sury.org-php.gpg https://packages.sury.org/php/apt.gpg
+sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
+sudo apt update
+sudo apt install php8.3 php8.3-cli
 
 # Vorgeschlagene Pakete aus Nextcloud-Dokumentation
-apt install apache2 mariadb-server libapache2-mod-php8.0
-apt install php8.0-gd php8.0-mysql php8.0-curl php8.0-mbstring php8.0-intl
-apt install php8.0-gmp php8.0-bcmath php-imagick php8.0-xml php8.0-zip
-apt install imagemagick
+sudo apt install apache2 mariadb-server libapache2-mod-php8.3
+sudo apt install php8.3-{gd,mysql,curl,mbstring,intl,gmp,bcmath,xml,imagick,zip}
 
 # Zusätzlich für unser Konzept notwendig:
-apt install php8.0-ldap php8.0-apcu
+sudo apt install redis-server
+sudo apt install php8.3-{ldap,apcu,redis}
 ```
 
 ### Datenbankserver (MariaDB/MySQL) einrichten
@@ -124,11 +123,11 @@ a2ensite nextcloud.conf
 In den PHP-Einstellungen für Apache muss noch der Default-Wert für das Memory-Limit auf 512 MB erhöht werden:
 
 ```bash
-vim /etc/php/8.0/apache2/php.ini
+vim /etc/php/8.3/apache2/php.ini
 ```
 
 ```ini
-# Datei /etc/php/8.0/apache2/php.ini
+# Datei /etc/php/8.3/apache2/php.ini
 
 # Die nachfolgenden Zeilen finden und wie folgt abändern:
 upload_max_filesize = 16G
@@ -138,14 +137,15 @@ output_buffering = 0
 ```
 
 ```bash
-vim /etc/php/8.0/cli/conf.d/20-apcu.ini
+vim /etc/php/8.3/cli/conf.d/20-apcu.ini
 ```
 
 ```ini
-# Datei /etc/php/8.0/cli/conf.d/20-apcu.ini
+# Datei /etc/php/8.3/cli/conf.d/20-apcu.ini
 
 # einfügen:
 apc.enable_cli=1
+apc.shm_size=256M
 ```
 
 Im Anschluss aktivieren Sie die für den Betrieb von Nextcloud notwendige Apache-Module und starten den Webserver neu:
@@ -219,32 +219,36 @@ vim /var/www/nextcloud/config/config.php
 # Datei /var/www/nextcloud/config/config.php
 
 # Folgende Einstellungen - falls noch nicht vorhanden - ergänzen/abändern:
-'trusted_domains' => 
-  array (
-	  0 => 'nextcloud.ihre-schule.de',
-	  # ggf. wollen Sie die www-Subdomäne ergänzen:
-	  1 => 'www.nextcloud.ihre-schule.de',
-  ),
-# Zeit in Minuten, bis gelöschte LDAP-User auch in der Nextcloud gelöscht werden
-'ldapUserCleanupInterval' => 15,
+
+# Vertrauenswerte Domänennamen inkl. www-Subdomain
+'trusted_domains' => ['nextcloud.ihre-schule.de','www.nextcloud.ihre-schule.de'],
+
+# APCu für lokalen Cache
 'memcache.local' => '\OC\Memcache\APCu',
-'overwrite.cli.url' => 'https://nextcloud.ihre-schule.de/',
-'overwriteprotocol' => 'https',
+
+# Redis für verteilten Cache und Datei-Sperrungen
+'memcache.distributed' => '\OC\Memcache\Redis',
+'memcache.locking' => '\OC\Memcache\Redis',
+'redis' => [
+     'host' => 'localhost',
+     'port' => 6379,
+],
+
 # index.php entfernen
 'htaccess.RewriteBase' => '/',
-# Wenn Sie einen Reverse-Proxy verwenden, tragen Sie dessen interne IP ein:
-'trusted_proxies' => 
-  array (
-    0 => '10.1.100.1',
-  ),
-'forwarded_for_headers' => 
-  array (
-    0 => 'HTTP_X_FORWARDED_FOR',
-  ),
-# Mit nachfolgenden beiden Angaben landen alle Freigaben für einen Benutzer automatisch 
-# im Ordner 'Mit mir geteilt', ohne dass der Nutzer hierzu explizit zustimmen muss.
+
+# Reverse-Proxy-Einstellungen
+'overwrite.cli.url' => 'https://nextcloud.ihre-schule.de/',
+'overwriteprotocol' => 'https',
+'trusted_proxies' => ['<Ihre-Proxy-IP>'],
+'forwarded_for_headers' => ['HTTP_X_FORWARDED_FOR'],
+
+# Freigaben für Nutzer ohne Zustimmung automatisch in Ordner 'Mit mir geteilt'
 'share_folder' => '/Mit mir geteilt',
 'sharing.enable_share_accept' => false,
+
+# Zeit in Minuten, bis gelöschte LDAP-User auch in der Nextcloud gelöscht werden
+'ldapUserCleanupInterval' => 15,
 ```
 
 ### Memory-Limit setzen
