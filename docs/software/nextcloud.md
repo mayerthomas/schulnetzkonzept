@@ -29,20 +29,20 @@ Mit Nextcloud speichern Sie Dateien datenschutzkonform auf Ihrem eigenen Server.
 # Notwendige Tools
 apt install sudo zip unzip imagemagick -y
     
-# Aktuelleres PHP (8.3) als das vom Debian-Repository installieren
+# Aktuelleres PHP (8.4) als das vom Debian-Repository installieren
 sudo apt install apt-transport-https
 sudo curl -sSLo /usr/share/keyrings/deb.sury.org-php.gpg https://packages.sury.org/php/apt.gpg
 sudo sh -c 'echo "deb [signed-by=/usr/share/keyrings/deb.sury.org-php.gpg] https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
 sudo apt update
-sudo apt install php8.3 php8.3-cli
+sudo apt install php8.4 php8.4-cli
 
 # Vorgeschlagene Pakete aus Nextcloud-Dokumentation
-sudo apt install apache2 mariadb-server libapache2-mod-php8.3
-sudo apt install php8.3-{gd,mysql,curl,mbstring,intl,gmp,bcmath,xml,imagick,zip}
+sudo apt install apache2 mariadb-server libapache2-mod-php8.4
+sudo apt install php8.4-{gd,mysql,curl,mbstring,intl,gmp,bcmath,xml,imagick,zip}
 
 # Zusätzlich für unser Konzept notwendig:
 sudo apt install redis-server
-sudo apt install php8.3-{ldap,apcu,redis}
+sudo apt install php8.4-{ldap,apcu,redis}
 ```
 
 ### Datenbankserver (MariaDB/MySQL) einrichten
@@ -123,25 +123,26 @@ a2ensite nextcloud.conf
 In den PHP-Einstellungen für Apache muss noch der Default-Wert für das Memory-Limit auf 512 MB erhöht werden:
 
 ```bash
-vim /etc/php/8.3/apache2/php.ini
+vim /etc/php/8.4/apache2/php.ini
 ```
 
 ```ini
-# Datei /etc/php/8.3/apache2/php.ini
+# Datei /etc/php/8.4/apache2/php.ini
 
 # Die nachfolgenden Zeilen finden und wie folgt abändern:
 upload_max_filesize = 16G
 post_max_size = 16G
 memory_limit = 512M
 output_buffering = 0
+opcache.inerned_strings_buffer=16
 ```
 
 ```bash
-vim /etc/php/8.3/cli/conf.d/20-apcu.ini
+vim /etc/php/8.4/cli/conf.d/20-apcu.ini
 ```
 
 ```ini
-# Datei /etc/php/8.3/cli/conf.d/20-apcu.ini
+# Datei /etc/php/8.4/cli/conf.d/20-apcu.ini
 
 # einfügen:
 apc.enable_cli=1
